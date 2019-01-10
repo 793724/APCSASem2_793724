@@ -8,7 +8,7 @@
 public class ArraySort {
     public static void main() { // main method
         // declares, initializes, and prints original array
-        int[] array = {500, 25, 4, 294, 81, 27, 0};
+        int[] array = {500, 25, 1, 81, 4, 49};
         System.out.print("Here is your unsorted array: [");
         printArray(array);
         

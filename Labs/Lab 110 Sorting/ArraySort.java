@@ -45,6 +45,20 @@ public class ArraySort {
         int[] sortedArray3 = selectionSort(array3); // selectionSort method
         System.out.print("Here is your sorted array: [");
         printArray(sortedArray3);
+        
+        
+        // INSERTION SORT
+        // declares, initializes, and prints original array
+        System.out.println();
+        System.out.println("Insertion Sort Method");
+        int[] array4 = {500, 25, 1, 81, 4, 49};
+        System.out.print("Here is your unsorted array: [");
+        printArray(array4);
+        
+        // declares, initializes, sorts, and prints the sorted array
+        int[] sortedArray4 = insertionSort(array4); // selectionSort method
+        System.out.print("Here is your sorted array: [");
+        printArray(sortedArray4);
     }
     
     public static int[] mySort(int[] ints){ // my method to sort the array
@@ -104,10 +118,31 @@ public class ArraySort {
             for(int j = i + 1; j < ints.length; j++) {
                 // compares the start value to the ones after it
                 if(ints[j] < ints[start]){
+                    start = j;
+                }
+            }
+            // swapping part
+            int tempJ = ints[start];
+            ints[start] = ints[i];
+            ints[i] = tempJ;
+        }
+        
+        // returns the sorted array
+        return ints;
+    }
+    
+    public static int[] insertionSort(int[] ints){ // uses insertion sort
+        int tempJ;
+        // repeats until the index is one less than the array length
+        for(int i = 1; i < ints.length; i++){
+            // runs through the array beginning at i and going backward
+            for(int j = i; j > 0; j--) {
+                // compares the start value to the ones after it
+                if(ints[j] < ints[j-1]){
                     // if the current value is less, swap the two
-                    int tempJ = ints[j];
-                    ints[j] = ints[start];
-                    ints[start] = tempJ;
+                    tempJ = ints[j];
+                    ints[j] = ints[j-1];
+                    ints[j-1] = tempJ;
                 }
             }
         }

@@ -8,19 +8,17 @@ import java.util.ArrayList;
 
 public class ArraySort {
     public static void main() { // main method
-        //MAIN ARRAYLIST
-        ArrayList<Integer> mainArray = new ArrayList<Integer>();
-        mainArray.add(500);
-        mainArray.add(25);
-        mainArray.add(1);
-        mainArray.add(81);
-        mainArray.add(4);
-        mainArray.add(49);
         
         //MY SORT
         // declares, initializes, and prints original array
         System.out.println("MySort Method");
-        ArrayList<Integer> array1 = mainArray;
+        ArrayList<Integer> array1 = new ArrayList<Integer>();
+        array1.add(500);
+        array1.add(25);
+        array1.add(1);
+        array1.add(81);
+        array1.add(4);
+        array1.add(49);
         System.out.print("Here is your unsorted array: [");
         printArray(array1);
         
@@ -33,7 +31,13 @@ public class ArraySort {
         // declares, initializes, and prints original array
         System.out.println();
         System.out.println("Bubble Sort Method");
-        ArrayList<Integer> array2 = mainArray;
+        ArrayList<Integer> array2 = new ArrayList<Integer>();
+        array2.add(500);
+        array2.add(25);
+        array2.add(1);
+        array2.add(81);
+        array2.add(4);
+        array2.add(49);
         System.out.print("Here is your unsorted array: [");
         printArray(array2);
         
@@ -47,7 +51,13 @@ public class ArraySort {
         // declares, initializes, and prints original array
         System.out.println();
         System.out.println("Selection Sort Method");
-        ArrayList<Integer> array3 = mainArray;
+        ArrayList<Integer> array3 = new ArrayList<Integer>();
+        array3.add(500);
+        array3.add(25);
+        array3.add(1);
+        array3.add(81);
+        array3.add(4);
+        array3.add(49);
         System.out.print("Here is your unsorted array: [");
         printArray(array3);
         
@@ -61,7 +71,13 @@ public class ArraySort {
         // declares, initializes, and prints original array
         System.out.println();
         System.out.println("Insertion Sort Method");
-        ArrayList<Integer> array4 = mainArray;
+        ArrayList<Integer> array4 = new ArrayList<Integer>();
+        array4.add(500);
+        array4.add(25);
+        array4.add(1);
+        array4.add(81);
+        array4.add(4);
+        array4.add(49);
         System.out.print("Here is your unsorted array: [");
         printArray(array4);
         
@@ -95,7 +111,7 @@ public class ArraySort {
                 }
             }
             // add the lowest value to the sorted array
-            sorted.set(j, lowest);
+            sorted.add(lowest);
             
             // set the lowest value to an abnormally high number to avoid choosing it again
             ints.set(position, 999999999);
@@ -118,7 +134,7 @@ public class ArraySort {
         double time = System.nanoTime();
         
         // where the sort ends each time
-        int limit = ints.length - 1;
+        int limit = ints.size() - 1;
         
         // repeats until the limit gets to 1
         for(int i = limit; i > 1; i--){
@@ -126,11 +142,11 @@ public class ArraySort {
             for(int j = 0; j < limit; j++){
                 // compares the current value to the one after
                 compares++;
-                if(ints[j] > ints[j+1]){
+                if(ints.get(j) > ints.get(j+1)){
                     // if the current value is greater, swap the two
-                    int tempJ = ints[j];
-                    ints[j] = ints[j+1];
-                    ints[j+1] = tempJ;
+                    int tempJ = ints.get(j);
+                    ints.set(j, ints.get(j+1));
+                    ints.set(j+1, tempJ);
                     swaps++;
                 }
             }
@@ -153,21 +169,21 @@ public class ArraySort {
         double time = System.nanoTime();
         
         // repeats until the index is one less than the array length
-        for(int i = 0; i < ints.length - 1; i++){
+        for(int i = 0; i < ints.size() - 1; i++){
             // value at which to start the sort
             int start = i;
             // runs through the array beginning just after the start
-            for(int j = i + 1; j < ints.length; j++) {
+            for(int j = i + 1; j < ints.size(); j++) {
                 // compares the start value to the ones after it
                 compares++;
-                if(ints[j] < ints[start]){
+                if(ints.get(j) < ints.get(start)){
                     start = j;
                 }
             }
             // swapping part
-            int tempJ = ints[start];
-            ints[start] = ints[i];
-            ints[i] = tempJ;
+            int tempJ = ints.get(start);
+            ints.set(start, ints.get(i));
+            ints.set(i, tempJ);
             swaps++;
         }
         double endTime = System.nanoTime();
@@ -189,16 +205,16 @@ public class ArraySort {
         
         int tempJ;
         // repeats until the index is one less than the array length
-        for(int i = 1; i < ints.length; i++){
+        for(int i = 1; i < ints.size(); i++){
             // runs through the array beginning at i and going backward
             for(int j = i; j > 0; j--) {
                 // compares the start value to the ones after it
                 compares++;
-                if(ints[j] < ints[j-1]){
+                if(ints.get(j) < ints.get(j-1)){
                     // if the current value is less, swap the two
-                    tempJ = ints[j];
-                    ints[j] = ints[j-1];
-                    ints[j-1] = tempJ;
+                    tempJ = ints.get(j);
+                    ints.set(j, j-1);
+                    ints.set(j-1, tempJ);
                     swaps++;
                 }
             }

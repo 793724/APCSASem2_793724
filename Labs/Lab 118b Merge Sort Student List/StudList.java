@@ -157,4 +157,66 @@ public class StudList{
             System.out.println("Sorry, no such student exists.");
         }
     }
+    
+    public void callMergeSort() {
+        ArrayList<Integer> numList = new ArrayList<Integer>(); // creates new array list of student numbers
+        for(int i = 0; i < studList.size(); i++) {
+            numList.add(studList.get(i).getStuNumber());
+        }
+        mergeSort(numList, numList.size());
+    }
+    
+    public static void mergeSort(ArrayList<Integer> a, int n){ // uses merge sort
+        if(n < 2){
+            printSorted(a); // finished
+        }
+        int mid = n/2;
+        ArrayList<Integer> l = new ArrayList<Integer>(); // one half of array
+        ArrayList<Integer> r = new ArrayList<Integer>(); // other half of array
+        for(int i = 0; i < mid; i++){
+            l.add(a.get(i)); // initializes array
+        }
+        for(int i = mid; i < n; i++){
+            r.add(a.get(i)); // initializes array
+        }
+        
+        // recursive part
+        mergeSort(l, mid);
+        mergeSort(r, n - mid);
+        // to merge the smaller arrays
+        merge(a, l, r, mid, n - mid);
+        
+        // returns the sorted array
+        printSorted(a);
+    }
+    
+    public static void merge(ArrayList<Integer> a, ArrayList<Integer> l, ArrayList<Integer> r, int left, int right){
+        // merge method for merge sort
+        // instance variables to keep track of index within array
+        int i = 0;
+        int j = 0;
+        int k = 0;
+        while(i < left && j < right){
+            // runs through array until reaching the end (middle)
+            if(l.get(i) <= r.get(j)){
+                a.set(k++, l.get(i++)); // adds the left value to the array
+            } else {
+                a.set(k++, r.get(j++)); // adds the right value to the array
+            }
+        }
+        while(i < left) {
+            a.set(k++, l.get(i++)); // incrementation
+        }
+        while(j < right) {
+            a.set(k++, r.get(j++)); // incrementation
+        }
+    }
+    
+    public static void printSorted(ArrayList<Integer> a){
+        System.out.print("Here is your sorted array: [");
+        for(int i = 0; i < a.size() - 1; i++) {
+            System.out.print(a.get(i) + ", ");
+        }
+        System.out.print(a.get(a.size() - 1) + "]");
+    }
 }

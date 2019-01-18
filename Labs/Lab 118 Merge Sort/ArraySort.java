@@ -1,5 +1,5 @@
 /**
- * Lab 110 Sorting Two (combined with lab 109)
+ * Lab 118 Merge Sort (added to lab 110)
  *
  * @ Emma Chiu
  * @ 1/10/19
@@ -56,7 +56,7 @@ public class ArraySort {
         printArray(array4);
         
         // declares, initializes, sorts, and prints the sorted array
-        int[] sortedArray4 = insertionSort(array4); // selectionSort method
+        int[] sortedArray4 = insertionSort(array4); // insertionSort method
         System.out.print("Here is your sorted array: [");
         printArray(sortedArray4);
         
@@ -69,7 +69,7 @@ public class ArraySort {
         printArray(array5);
         
         // declares, initializes, sorts, and prints the sorted array
-        int[] sortedArray5 = insertionSort(array5); // selectionSort method
+        int[] sortedArray5 = mergeSort(array5, 6); // mergeSort method
         System.out.print("Here is your sorted array: [");
         printArray(sortedArray5);
     }

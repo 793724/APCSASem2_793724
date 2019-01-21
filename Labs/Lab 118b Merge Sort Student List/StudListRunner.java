@@ -197,12 +197,6 @@ public class StudListRunner{
                 }
                 System.out.println();
             } else if(command == 8) {
-                System.out.println("Merge sort");
-                // declares, initializes, and prints original array
-                System.out.println();
-                System.out.println("Note: so far, this method only sorts the student numbers, not the students.");
-                int[] array5 = {500, 25, 1, 81, 4, 49};
-                
                 // declares, initializes, sorts, and prints the sorted array
                 studList.callMergeSort(); // calls the mergeSort method
                 System.out.println();

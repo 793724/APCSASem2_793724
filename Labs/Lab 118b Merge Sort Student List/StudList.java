@@ -163,12 +163,16 @@ public class StudList{
         for(int i = 0; i < studList.size(); i++) {
             numList.add(studList.get(i).getStuNumber());
         }
-        mergeSort(numList, numList.size());
+        if(numList.size() == 0) {
+            System.out.print("Your list has no students in it!");
+        } else {
+            printSorted(mergeSort(numList, numList.size()));
+        }
     }
     
-    public static void mergeSort(ArrayList<Integer> a, int n){ // uses merge sort
-        if(n < 2){
-            printSorted(a); // finished
+    public static ArrayList<Integer> mergeSort(ArrayList<Integer> a, int n){ // uses merge sort
+        if (n < 2){
+            return a; // finished
         }
         int mid = n/2;
         ArrayList<Integer> l = new ArrayList<Integer>(); // one half of array
@@ -187,7 +191,7 @@ public class StudList{
         merge(a, l, r, mid, n - mid);
         
         // returns the sorted array
-        printSorted(a);
+        return a;
     }
     
     public static void merge(ArrayList<Integer> a, ArrayList<Integer> l, ArrayList<Integer> r, int left, int right){
@@ -213,7 +217,7 @@ public class StudList{
     }
     
     public static void printSorted(ArrayList<Integer> a){
-        System.out.print("Here is your sorted array: [");
+        System.out.print("Here is your sorted array of student numbers: [");
         for(int i = 0; i < a.size() - 1; i++) {
             System.out.print(a.get(i) + ", ");
         }

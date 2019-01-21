@@ -1,12 +1,12 @@
 #BlueJ class context
 comment0.target=StudList
-comment0.text=\r\n\ ArrayList\ Project\ 2-\ Student\ List\r\n\r\n\ @author\ (Emma\ Chiu)\r\n\ @version\ (1025)\r\n
+comment0.text=\n\ ArrayList\ Project\ 2-\ Student\ List\n\n\ @author\ (Emma\ Chiu)\n\ @version\ (1025)\n
 comment1.params=name\ number\ gpa
 comment1.target=void\ addStudentToList(java.lang.String,\ int,\ double)
 comment10.params=
 comment10.target=void\ callMergeSort()
 comment11.params=a\ n
-comment11.target=void\ mergeSort(java.util.ArrayList,\ int)
+comment11.target=java.util.ArrayList\ mergeSort(java.util.ArrayList,\ int)
 comment12.params=a\ l\ r\ left\ right
 comment12.target=void\ merge(java.util.ArrayList,\ java.util.ArrayList,\ java.util.ArrayList,\ int,\ int)
 comment13.params=a

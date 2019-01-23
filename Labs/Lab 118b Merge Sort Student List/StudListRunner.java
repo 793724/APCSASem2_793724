@@ -16,7 +16,7 @@ public class StudListRunner{
         while(end == false) {
             // takes in the user's command
             int command = menuNumber();
-            if(command == 9) {
+            if(command == 10) {
                 // ends the program
                 end = true;
             } else if (command == 1) {
@@ -197,13 +197,18 @@ public class StudListRunner{
                 }
                 System.out.println();
             } else if(command == 8) {
-                // declares, initializes, sorts, and prints the sorted array
                 studList.callMergeSort(); // calls the mergeSort method
+                System.out.println();
+            } else if(command == 9) {
+                Scanner command9 = new Scanner(System.in);
+                System.out.print("What student number would you like to search for? ");
+                int number = command9.nextInt();
+                studList.callBinarySearch(number); // calls the binarySort method
                 System.out.println();
             } else {
                 invalid();
             }
-            if(command != 9) {
+            if(command != 10) {
                 // clears the screen after each command
                 Scanner clear = new Scanner(System.in);
                 System.out.println("Press any key to clear the screen and continue!");
@@ -229,7 +234,8 @@ public class StudListRunner{
         System.out.println("  - Print a student's information (6)");
         System.out.println("  - Do a filtered student search (7)");
         System.out.println("  - Merge sort your list by student number (8)");
-        System.out.println("  - End the program (9)");
+        System.out.println("  - Binary search for a student by student number (9)");
+        System.out.println("  - End the program (10)");
         System.out.println();
         // takes user's command
         int input = takeCommand.nextInt();

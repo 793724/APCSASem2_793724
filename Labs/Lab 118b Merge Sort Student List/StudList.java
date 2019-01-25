@@ -223,8 +223,9 @@ public class StudList{
     public void binarySearch(ArrayList<Student> a, int n, int start, int end) {
         int index = (end-start)/2;
         if(a.get(index).getStuNumber() == n){
+            System.out.println();
             System.out.println("The student number " + n + " corresponds to the following student:");
-            System.out.print("Name: " + studList.get(index).getStudentName() + ", Student Number: " + n + ", GPA: " + studList.get(index).getGPA());
+            System.out.println("Name: " + studList.get(index).getStudentName() + ", Student Number: " + n + ", GPA: " + studList.get(index).getGPA());
             return;
         }
         if(a.get(index).getStuNumber() < n){

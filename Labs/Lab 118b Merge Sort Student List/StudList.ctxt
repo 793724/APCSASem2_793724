@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=StudList
-comment0.text=\r\n\ ArrayList\ Project\ 2-\ Student\ List\r\n\r\n\ @author\ (Emma\ Chiu)\r\n\ @version\ (1025)\r\n
+comment0.text=\n\ ArrayList\ Project\ 2-\ Student\ List\n\n\ @author\ (Emma\ Chiu)\n\ @version\ (1025)\n
 comment1.params=name\ number\ gpa
 comment1.target=void\ addStudentToList(java.lang.String,\ int,\ double)
 comment10.params=
@@ -11,8 +11,8 @@ comment12.params=a\ l\ r\ left\ right
 comment12.target=void\ merge(java.util.ArrayList,\ java.util.ArrayList,\ java.util.ArrayList,\ int,\ int)
 comment13.params=n
 comment13.target=void\ callBinarySearch(int)
-comment14.params=a\ size
-comment14.target=void\ binarySearch(java.util.ArrayList,\ int)
+comment14.params=a\ n\ start\ end
+comment14.target=void\ binarySearch(java.util.ArrayList,\ int,\ int,\ int)
 comment2.params=last
 comment2.target=boolean\ deleteStudentFromList(java.lang.String)
 comment3.params=number\ last\ name\ gpa

@@ -216,11 +216,21 @@ public class StudList{
             System.out.print("Your list has no students in it!");
         } else {
             mergeSort(studList, studList.size());
-            binarySearch(studList, n);
+            binarySearch(studList, n, 0, studList.size());
         }
     }
     
-    public void binarySearch(ArrayList<Student> a, int size) {
-        System.out.print("Binary sort!");
+    public void binarySearch(ArrayList<Student> a, int n, int start, int end) {
+        int index = (end-start)/2;
+        if(a.get(index).getStuNumber() == n){
+            System.out.println("The student number " + n + " corresponds to the following student:");
+            System.out.print("Name: " + studList.get(index).getStudentName() + ", Student Number: " + n + ", GPA: " + studList.get(index).getGPA());
+            return;
+        }
+        if(a.get(index).getStuNumber() < n){
+            binarySearch(a, n, index, end);
+        } else {
+            binarySearch(a, n, 0, index);
+        }
     }
 }

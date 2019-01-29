@@ -10,8 +10,8 @@ public class Character {
     int speed;
     
     public Character(String c, int s) {
-        catchphrase = c;
-        speed = s;
+        setCatchphrase(c);
+        setSpeed(s);
     }
 
     public void setCatchphrase(String phrase) {

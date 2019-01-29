@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=Mario
+comment0.text=\r\n\ Lab\ 129\ It's\ Me\ Mario\r\n\r\n\ @\ Emma\ Chiu\r\n\ @\ 1/29/19\r\n
+comment1.params=c\ s
+comment1.target=Mario(java.lang.String,\ int)
+comment2.params=speed
+comment2.target=void\ setSpeed(int)
+numComments=3

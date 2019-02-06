@@ -19,6 +19,7 @@ public class MySwingApplication implements Runnable {
         // new canvas component object
         canvasComponent = new CanvasComponent(100, 100);
         jFrame.add(canvasComponent);
+        jFrame.addKeyListener(canvasComponent);
         jFrame.setVisible(true);
     }
     

@@ -9,12 +9,15 @@ import java.util.Random;
  * @ 1/31/19
  */
 
-public class CanvasComponent extends JComponent implements ActionListener, MouseListener, MouseMotionListener{
+public class CanvasComponent extends JComponent implements MouseListener, MouseMotionListener, ActionListener, KeyListener{
     // instance variables
     int rectX;
     int rectY;
+    int arcWidth;
+    int arcHeight;
     int rectWidth;
     int rectHeight;
+    int eyeSize;
     int mouseFromX;
     int mouseFromY;
     boolean mouseInRect;
@@ -26,18 +29,23 @@ public class CanvasComponent extends JComponent implements ActionListener, Mouse
     int gutterX;
     int gutterY;
     Timer animationTimer;
+    int motionSpeed;
     
     public CanvasComponent(int w, int h){
         // initializes canvas component object
-        setSize(rectWidth, rectHeight);
         rectX = 150;
         rectY = 150;
+        arcWidth = 20;
+        arcHeight = 20;
         rectWidth = w;
         rectHeight = h;
+        setSize(rectWidth, rectHeight);
+        eyeSize = 30;
         animationDeltaX = 1;
         animationDeltaY = 0;
         gutterX = 10;
         gutterY = 10;
+        motionSpeed = 1;
         // picks up mouse events
         this.addMouseListener(this);
         this.addMouseMotionListener(this);
@@ -58,7 +66,33 @@ public class CanvasComponent extends JComponent implements ActionListener, Mouse
         } else {
             g.setColor(Color.black);
         }
-        g.fillRect(rectX, rectY, rectWidth, rectHeight);
+        // draws the round rectangle and the eyes
+        g.fillRoundRect(rectX, rectY, rectWidth, rectHeight, arcWidth, arcHeight);
+        g.setColor(Color.white);
+        g.fillOval(rectX + 15, rectY + 20, eyeSize, eyeSize);
+        g.fillOval(rectX + 55, rectY + 20, eyeSize, eyeSize);
+        g.setColor(Color.black);
+        // animates the pupils based on mouse position
+        int eyeX;
+        int eyeY;
+        if(mouseFromX > rectX && mouseFromY < rectY && mouseInRect == false){
+            eyeX = rectX + 25;
+            eyeY = rectY + 20;
+        } else if (mouseFromX < rectX && mouseFromY < rectY && mouseInRect == false){
+            eyeX = rectX + 15;
+            eyeY = rectY + 20;
+        } else if(mouseFromX > rectX && mouseFromY > rectY && mouseInRect == false){
+            eyeX = rectX + 25;
+            eyeY = rectY + 35;
+        } else if(mouseFromX < rectX && mouseFromY > rectY && mouseInRect == false){
+            eyeX = rectX + 15;
+            eyeY = rectY + 35;
+        } else {
+            eyeX = rectX + 22;
+            eyeY = rectY + 20;
+        }
+        g.fillOval(eyeX, eyeY, eyeSize/2, eyeSize/2);
+        g.fillOval(eyeX + 40, eyeY, eyeSize/2, eyeSize/2);
     }
     
     public void mouseClicked(MouseEvent e){
@@ -75,6 +109,17 @@ public class CanvasComponent extends JComponent implements ActionListener, Mouse
             shapeSelected = true;
         } else {
             shapeSelected = false;
+            // motion to follow the mouse
+            if(mouseFromX < rectX){
+                animationDeltaX = -1;
+            } else {
+                animationDeltaX = 1;
+            }
+            if(mouseFromY < rectY){
+                animationDeltaY = -1;
+            } else {
+                animationDeltaY = 1;
+            }
         }
     }
     
@@ -130,13 +175,13 @@ public class CanvasComponent extends JComponent implements ActionListener, Mouse
                 animationDeltaY = 1;
                 // resets x and y positions
                 rectX = (int)componentSizeDimension.getWidth() - rectWidth - gutterX;
-                rectY = rectY + animationDeltaY;
+                rectY = rectY + animationDeltaY*motionSpeed;
             } else if(rectY + rectHeight + animationDeltaY + gutterY > componentSizeDimension.getHeight()){
                 // if the rectangle hits the bottom border, move left            
                 animationDeltaX = -1;
                 animationDeltaY = 0;
                 // resets x and y positions
-                rectX = rectX + animationDeltaX;
+                rectX = rectX + animationDeltaX*motionSpeed;
                 rectY = (int)componentSizeDimension.getHeight() - rectHeight - gutterY;
             } else if(rectX + animationDeltaX < gutterX){
                 // if the rectangle hits the left border, move up            
@@ -144,21 +189,41 @@ public class CanvasComponent extends JComponent implements ActionListener, Mouse
                 animationDeltaY = -1;
                 // resets x and y positions
                 rectX = gutterX;
-                rectY = rectY + animationDeltaY;
+                rectY = rectY + animationDeltaY*motionSpeed;
             } else if(rectY + animationDeltaY < gutterY){
                 // if the rectangle hits the top border, move right            
                 animationDeltaX = 1;
                 animationDeltaY = 0;
                 // resets x and y positions
-                rectX = rectX + animationDeltaX;
+                rectX = rectX + animationDeltaX*motionSpeed;
                 rectY = gutterY;
             } else {
                 // if the rectangle has not collided with a border, keep moving in the same direction
-                rectX = rectX + animationDeltaX;
-                rectY = rectY + animationDeltaY;
+                rectX = rectX + animationDeltaX*motionSpeed;
+                rectY = rectY + animationDeltaY*motionSpeed;
             }
         }
         // redraws the shape
         repaint();
+    }
+    
+    public void keyTyped(KeyEvent e){
+        // detects if a key is pressed
+        char keyChar = e.getKeyChar();
+        if(keyChar == '+'){
+            // increase the speed if '+' is pressed
+            motionSpeed++;
+        } else if(keyChar == '-' && motionSpeed > 0){
+            // decrease the speed if '-' is pressed
+            motionSpeed--;
+        }
+    }
+
+    public void keyPressed(KeyEvent e){
+        // empty method
+    }
+
+    public void keyReleased(KeyEvent e){
+        // empty method
     }
 }

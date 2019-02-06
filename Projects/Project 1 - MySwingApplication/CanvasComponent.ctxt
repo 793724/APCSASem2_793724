@@ -1,8 +1,10 @@
 #BlueJ class context
 comment0.target=CanvasComponent
-comment0.text=\r\n\ Project\ 1\ -\ MySwingApplication\r\n\r\n\ @\ Emma\ Chiu\r\n\ @\ 1/31/19\r\n
+comment0.text=\n\ Project\ 1\ -\ MySwingApplication\n\n\ @\ Emma\ Chiu\n\ @\ 1/31/19\n
 comment1.params=w\ h
 comment1.target=CanvasComponent(int,\ int)
+comment10.params=e
+comment10.target=void\ actionPerformed(java.awt.event.ActionEvent)
 comment2.params=g
 comment2.target=void\ paintComponent(java.awt.Graphics)
 comment3.params=e
@@ -19,4 +21,4 @@ comment8.params=e
 comment8.target=void\ mouseDragged(java.awt.event.MouseEvent)
 comment9.params=e
 comment9.target=void\ mouseMoved(java.awt.event.MouseEvent)
-numComments=10
+numComments=11

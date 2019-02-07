@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=CanvasComponent
-comment0.text=\r\n\ Project\ 1\ -\ MySwingApplication\r\n\r\n\ @\ Emma\ Chiu\r\n\ @\ 1/31/19\r\n
+comment0.text=\n\ Project\ 1\ -\ MySwingApplication\n\n\ @\ Emma\ Chiu\n\ @\ 1/31/19\n
 comment1.params=w\ h
 comment1.target=CanvasComponent(int,\ int)
 comment10.params=e

@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=CanvasComponent
-comment0.text=\r\n\ Simple\ Game\r\n\r\n\ @\ Emma\ Chiu\r\n\ @\ 2/7/19\r\n
+comment0.text=\r\n\ Simple\ Game\r\n\r\n\ @\ Emma\ Chiu\r\n\ @\ 2/7/19\r\n\ \r\n\ TO\ DO\:\r\n\ -\ Limit\ window\ size\r\n\ -\ Put\ win\ and\ lose\ methods\ on\ the\ screen\r\n\ -\ Update\ instructions\ on-screen\r\n
 comment1.params=w\ h
 comment1.target=CanvasComponent(int,\ int)
 comment2.params=g

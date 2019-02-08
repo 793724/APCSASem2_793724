@@ -3,11 +3,17 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.KeyEventDispatcher;
 import java.util.concurrent.TimeUnit;
+import java.awt.Graphics2D;
 /**
  * Simple Game
  *
  * @ Emma Chiu
  * @ 2/7/19
+ * 
+ * TO DO:
+ * - Limit window size
+ * - Put win and lose methods on the screen
+ * - Update instructions on-screen
  */
 
 public class CanvasComponent extends JComponent implements KeyListener{
@@ -40,11 +46,6 @@ public class CanvasComponent extends JComponent implements KeyListener{
         dead = false;
         stop = false;
         thrown = false;
-        System.out.println("Welcome to the game!");
-        System.out.println("Use the arrow keys to get to the green square.");
-        System.out.println("Don't touch red!");
-        System.out.println();
-        System.out.println("(P.S. Stuck? Find a way to shift your luck!)");
     }
 
     protected void paintComponent(Graphics g){
@@ -83,6 +84,14 @@ public class CanvasComponent extends JComponent implements KeyListener{
             g.fillOval(rectX + 22, rectY + 20, eyeSize/2, eyeSize/2);
             g.fillOval(rectX + 62, rectY + 20, eyeSize/2, eyeSize/2);
         }
+        Graphics text = (Graphics2D) g;
+        Font font = new Font("Serif", Font.PLAIN, 18);
+        text.setFont(font);
+        text.drawString("Welcome to the game! Use the arrow keys to", 10, 390);
+        text.drawString("get to the green square. Don't touch red!", 10, 410);
+        Font smallFont = new Font("Serif", Font.PLAIN, 10);
+        text.setFont(smallFont);
+        text.drawString("(P.S. Stuck? Find a way to shift your luck!)", 10, 425);
     }
 
     public void keyPressed(KeyEvent e){

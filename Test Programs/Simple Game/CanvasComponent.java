@@ -4,6 +4,7 @@ import java.awt.event.*;
 import java.awt.KeyEventDispatcher;
 import java.util.concurrent.TimeUnit;
 import java.awt.Graphics2D;
+import java.util.Random;
 /**
  * Simple Game
  *
@@ -11,7 +12,6 @@ import java.awt.Graphics2D;
  * @ 2/7/19
  * 
  * TO DO:
- * - Limit window size
  * - Put win and lose methods on the screen
  * - Update instructions on-screen
  */
@@ -30,7 +30,10 @@ public class CanvasComponent extends JComponent implements KeyListener{
     int gutterY;
     boolean dead;
     boolean stop;
-    boolean thrown;
+    boolean moveRight;
+    boolean moveLeft;
+    boolean moveUp;
+    boolean moveDown;
 
     public CanvasComponent(int w, int h){
         rectX = 10;
@@ -45,7 +48,10 @@ public class CanvasComponent extends JComponent implements KeyListener{
         gutterY = 10;
         dead = false;
         stop = false;
-        thrown = false;
+        moveRight = false;
+        moveLeft = false;
+        moveUp = false;
+        moveDown = false;
     }
 
     protected void paintComponent(Graphics g){
@@ -53,7 +59,16 @@ public class CanvasComponent extends JComponent implements KeyListener{
         g.fillRect(160, 40, 200, 200);
         g.setColor(Color.green);
         g.fillRect(360, 0, 40, 40);
-        g.setColor(Color.black);
+        if(stop == true && dead == false){
+            int R = (int)(Math.random()*256);
+            int G = (int)(Math.random()*256);
+            int B = (int)(Math.random()*256);
+            Color randColor = new Color(R, G, B);
+            g.setColor(randColor);
+            repaint();
+        } else {
+            g.setColor(Color.black);
+        }
         if(small == true){
             rectWidth = 20;
             rectHeight = 20;
@@ -69,8 +84,30 @@ public class CanvasComponent extends JComponent implements KeyListener{
             g.fillOval(rectX + 3, rectY + 4, eyeSize, eyeSize);
             g.fillOval(rectX + 11, rectY + 4, eyeSize, eyeSize);
             g.setColor(Color.black);
-            g.fillOval(rectX + 22/5, rectY + 4, eyeSize/2, eyeSize/2);
-            g.fillOval(rectX + 62/5, rectY + 4, eyeSize/2, eyeSize/2);
+            int eyeX;
+            int eyeY;
+            if(moveRight == true){
+                eyeX = rectX + 6;
+                eyeY = rectY + 5;
+                moveRight = false;
+            } else if (moveLeft == true){
+                eyeX = rectX + 3;
+                eyeY = rectY + 5;
+                moveLeft = false;
+            } else if(moveUp == true){
+                eyeX = rectX + 4;
+                eyeY = rectY + 4;
+                moveUp = false;
+            } else if(moveDown == true){
+                eyeX = rectX + 4;
+                eyeY = rectY + 7;
+                moveDown = false;
+            } else {
+                eyeX = rectX + 4;
+                eyeY = rectY + 4;
+            }
+            g.fillOval(eyeX, eyeY, eyeSize/2, eyeSize/2);
+            g.fillOval(eyeX + 8, eyeY, eyeSize/2, eyeSize/2);
         } else {
             g.fillRoundRect(rectX, rectY, rectWidth, rectHeight, arcWidth, arcHeight);
             if(dead == false){
@@ -81,17 +118,48 @@ public class CanvasComponent extends JComponent implements KeyListener{
             g.fillOval(rectX + 15, rectY + 20, eyeSize, eyeSize);
             g.fillOval(rectX + 55, rectY + 20, eyeSize, eyeSize);
             g.setColor(Color.black);
-            g.fillOval(rectX + 22, rectY + 20, eyeSize/2, eyeSize/2);
-            g.fillOval(rectX + 62, rectY + 20, eyeSize/2, eyeSize/2);
+            int eyeX;
+            int eyeY;
+            if(moveRight == true){
+                eyeX = rectX + 30;
+                eyeY = rectY + 25;
+                moveRight = false;
+            } else if (moveLeft == true){
+                eyeX = rectX + 15;
+                eyeY = rectY + 25;
+                moveLeft = false;
+            } else if(moveUp == true){
+                eyeX = rectX + 22;
+                eyeY = rectY + 20;
+                moveUp = false;
+            } else if(moveDown == true){
+                eyeX = rectX + 22;
+                eyeY = rectY + 35;
+                moveDown = false;
+            } else {
+                eyeX = rectX + 22;
+                eyeY = rectY + 20;
+            }
+            g.fillOval(eyeX, eyeY, eyeSize/2, eyeSize/2);
+            g.fillOval(eyeX + 40, eyeY, eyeSize/2, eyeSize/2);
         }
         Graphics text = (Graphics2D) g;
-        Font font = new Font("Serif", Font.PLAIN, 18);
+        Font font = new Font("Serif", Font.PLAIN, 20);
         text.setFont(font);
-        text.drawString("Welcome to the game! Use the arrow keys to", 10, 390);
-        text.drawString("get to the green square. Don't touch red!", 10, 410);
+        text.drawString("Welcome! Use the arrow keys to get to", 20, 390);
+        text.drawString("the green square. Don't touch red!", 20, 420);
         Font smallFont = new Font("Serif", Font.PLAIN, 10);
         text.setFont(smallFont);
-        text.drawString("(P.S. Stuck? Find a way to shift your luck!)", 10, 425);
+        text.drawString("(P.S. Stuck? Find a way to shift your luck!)", 20, 445);
+        Font endFont = new Font("Serif", Font.PLAIN, 50);
+        text.setFont(endFont);
+        if(stop == true){
+            if(dead == true){
+                text.drawString("YOU LOSE.", 75, 200);
+            } else {
+                text.drawString("YOU WIN!", 80, 200);
+            }
+        }
     }
 
     public void keyPressed(KeyEvent e){
@@ -102,34 +170,32 @@ public class CanvasComponent extends JComponent implements KeyListener{
             } else if(e.getKeyCode() == 37){
                 if(rectX > gutterX){
                     rectX = rectX - 20;
+                    moveLeft = true;
                 }
             } else if(e.getKeyCode() == 39){
                 if(rectX + rectWidth < componentSizeDimension.getWidth() - gutterX){
                     rectX = rectX + 20;
+                    moveRight = true;
                 }
             } else if(e.getKeyCode() == 38){
                 if(rectY > gutterY){
                     rectY = rectY - 20;
+                    moveUp = true;
                 }
             } else if(e.getKeyCode() == 40){
                 if(rectY + rectHeight < componentSizeDimension.getHeight() - gutterY){
                     rectY = rectY + 20;
+                    moveDown = true;
                 }
             }
             repaint();
         }
-        if(rectX + rectWidth > 160 && rectX < 360 && rectY + rectHeight > 40 && rectY < 240 && thrown == false) {
+        if(rectX + rectWidth > 160 && rectX < 360 && rectY + rectHeight > 40 && rectY < 240) {
             dead = true;
             stop = true;
-            System.out.println();
-            System.out.println("YOU LOSE.");
-            thrown = true;
         }
-        if(rectX > 360 && rectY + rectHeight < 40 && small == true && thrown == false){
+        if(rectX > 360 && rectY + rectHeight < 40 && small == true){
             stop = true;
-            System.out.println();
-            System.out.println("YOU WIN!");
-            thrown = true;
         }
     }
 

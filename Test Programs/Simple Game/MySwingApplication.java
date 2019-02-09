@@ -21,6 +21,7 @@ public class MySwingApplication implements Runnable {
         jFrame.add(canvasComponent);
         jFrame.addKeyListener(canvasComponent);
         jFrame.setVisible(true);
+        jFrame.setResizable(false);
     }
     
     public static void main() {

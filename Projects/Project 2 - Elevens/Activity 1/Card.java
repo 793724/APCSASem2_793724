@@ -42,7 +42,6 @@ public class Card {
         pointValue = cardPointValue;
     }
 
-
     /**
      * Accesses this <code>Card's</code> suit.
      * @return this <code>Card's</code> suit.

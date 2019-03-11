@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=WordPairList
+comment0.text=\r\n\ Test\ WordPair\r\n\r\n\ @\ Emma\ Chiu\r\n\ @\ 3/11/19\r\n
+comment1.params=
+comment1.target=void\ main()
+comment2.params=words
+comment2.target=WordPairList(java.lang.String[])
+comment3.params=
+comment3.target=int\ numMatches()
+comment4.params=
+comment4.target=void\ print()
+numComments=5

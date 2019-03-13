@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=QuickSorter
+comment0.text=\r\n\ Project\ 3\ -\ Sorting\r\n\ \r\n\ @\ Emma\ Chiu\r\n\ @\ 3/13/19\r\n
+comment1.params=
+comment1.target=QuickSorter()
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ QuickSorter\r\n
+comment2.params=a\ initialLeftIndex\ limitRightIndex
+comment2.target=void\ onePass1(int[],\ int,\ int)
+comment3.params=a\ initialLeftIndex\ limitRightIndex
+comment3.target=void\ setPivot(int[],\ int,\ int)
+comment4.params=a\ initialLeftIndex\ limitRightIndex
+comment4.target=void\ onePass(int[],\ int,\ int)
+comment5.params=a
+comment5.target=void\ sort(int[])
+numComments=6

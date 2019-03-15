@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=InsertionSorter
+comment0.text=\r\n\ Project\ 3\ -\ Sorting\r\n\ \r\n\ @\ Emma\ Chiu\r\n\ @\ 3/13/19\r\n
+comment1.params=a
+comment1.target=void\ sort(int[])
+numComments=2

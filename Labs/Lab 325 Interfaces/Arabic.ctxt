@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=Arabic
+comment0.text=\n\ Lab\ 325\ Interfaces\n\n\ @\ Emma\ Chiu\n\ @\ 3/25/19\n
+comment1.params=
+comment1.target=Arabic()
+comment2.params=
+comment2.target=int\ getSpeakers()
+comment3.params=
+comment3.target=java.lang.String\ getName()
+comment4.params=
+comment4.target=double\ nativeSpeak()
+comment5.params=
+comment5.target=java.lang.String\ sayHello()
+numComments=6

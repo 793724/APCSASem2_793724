@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=ClimbingClub
+comment0.text=\n\ Homework\ 410\ Climbing\ Club\n\n\ @\ Emma\ Chiu\n\ @\ 4/10/19\n
+comment1.params=
+comment1.target=ClimbingClub()
+comment2.params=peakName\ climbTime
+comment2.target=void\ addClimbA(java.lang.String,\ int)
+comment3.params=peakName\ climbTime
+comment3.target=void\ addClimbB(java.lang.String,\ int)
+comment4.params=
+comment4.target=int\ distinctPeakName()
+comment5.params=
+comment5.target=void\ print()
+numComments=6

@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=GridTester
+comment0.text=\n\ Homework\ 415\ -\ Problem\ 5\n\n\ @\ Emma\ Chiu\n\ @\ 4/15/19\n
+comment1.params=r\ c
+comment1.target=GridTester(int,\ int)
+comment2.params=
+comment2.target=void\ loadOccupied()
+comment3.params=
+comment3.target=int\ getRows()
+comment4.params=c
+comment4.target=java.util.ArrayList\ findNeighbors(Cell)
+numComments=5

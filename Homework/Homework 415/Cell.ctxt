@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.target=Cell
+comment0.text=\n\ Homework\ 415\ -\ Problem\ 5\n\n\ @\ Emma\ Chiu\n\ @\ 4/15/19\n
+comment1.params=
+comment1.target=Cell()
+comment2.params=
+comment2.target=boolean\ getOccupied()
+comment3.params=
+comment3.target=void\ setOccupied()
+comment4.params=r
+comment4.target=void\ setRows(int)
+comment5.params=c
+comment5.target=void\ setCols(int)
+comment6.params=
+comment6.target=int\ getRows()
+comment7.params=
+comment7.target=int\ getCols()
+comment8.params=
+comment8.target=void\ loadNeighbors()
+numComments=9

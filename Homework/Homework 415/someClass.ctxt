@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=someClass
+comment0.text=\n\ Homework\ 415\ -\ Problem\ 4\n\n\ @\ Emma\ Chiu\n\ @\ 4/15/19\n
+comment1.params=
+comment1.target=someClass()
+comment2.params=
+comment2.target=void\ main()
+comment3.params=names
+comment3.target=void\ sortStrings(java.util.ArrayList)
+comment4.params=names
+comment4.target=void\ shuffleStrings(java.util.ArrayList)
+comment5.params=word
+comment5.target=void\ insertString(java.lang.String)
+comment6.params=
+comment6.target=void\ print()
+numComments=7
